@@ -9,6 +9,9 @@
         - [Operability](#operability)
         - [Simplicity](#simplicity)
         - [Evolvability](#evolvability)
+- [Data models and query languages](#data-models-and-query-languages)
+    - [The object-relation mismatch](#the-object-relation-mismatch)
+    - [Relation vs document based](#relation-vs-document-based)
 
 
 ## Three fundamental forces
@@ -73,6 +76,22 @@ One of the best tools we have to remove accidental complexity is **abstraction**
 
 #### Evolvability
 Evolvability - making change easy.
+
+## Data models and query languages
+### The object-relation mismatch
+Most apps development today is done in object-oriented approach, which leads to a common criticism of the SQL data model: if data is stored in relational tables, an awkward translation layer is required between the objects in the app code and the database model of tables, rows, and columns. The disconnect between the model is something called an **impedance mismatch**.  
+ORMs help with that a bit but anyway they can't completely hide the difference between the two models.  
+For instance lets take some mycv.app as an example (the application main feature is to store user resumes). In case of relational db you will proably have few tables like users, jobs, educations. In case of nosql db you can store cv in one place as a whole document. Here is when query problem comes into place: in cases user will want to get the data from the db, he will need to have multiple queries (to all that tables) or one big query with many Joins, however with nosql db you wont have such problems.
+#### Relation vs document based
+Document based:
+* Schema flexibility
+* Better performance due to locality
+* For some apps it is closer to the data structures used by apps
+
+Relational:
+* Better support for joins
+* Better many-to-one, many-to-many relationships
+
 ```sh
 docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=test <youruser>/dillinger:${package.json.version}
 ```
