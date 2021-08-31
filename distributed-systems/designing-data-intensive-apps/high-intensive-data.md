@@ -87,10 +87,35 @@ Document based:
 * Schema flexibility
 * Better performance due to locality
 * For some apps it is closer to the data structures used by apps
+* schema on read only (implicit and the application code do need to have some structure)
 
 Relational:
 * Better support for joins
 * Better many-to-one, many-to-many relationships
+* schema on write and read queries
+
+Document dbs are sometimes called _shemaless_, but that's misleading, as the code that reads the data usually assumes some kind of structure - there is an implicit schema, but it is not enforced by the database.  
+Schema on read is similar to dynamic (runtime) type checking in programming languages, whereas schema on write is similar to static (compile-time) type checking.
+
+### Query language for data
+SQL is declerative (you say to db what result you want).  
+IMS, CODASYL is imperative (like almost all programming languages, you say every step you want to perform).  
+Yes the declerative language is more stricted, and have more limitations, but it is more easier to work with and more concise. And even more important part, it also hides implementation details of the db engine, which makes it possible to the db to introduce performance improvements without requiring any changes to queries. For example, in the implerative code like this: 
+```sh
+function getAdmins(users) {
+    var admins = [];
+    for (int i = 0; i < users.length; ++i) {
+        if (users[i].role == Roles.Admin) {
+            admins.Add(users[i]);
+        }
+    }
+    return admins;
+}
+```
+the list of users appears in a particular order. If the db wants to reclaim unused disk space behind the scenes, it might need to move records around, changing the order in which the animal appear. Can the db do that safely without breaking queries?  
+The SQL (for instance it will be SELECT query in this case) does not guarantee any particular ordering, and so it doesn't mind if the order changes. But if the query is written in imperative way, the db can never be sure whether the code is relying on the ordering or not. The fact that SQL is more limited in functionality gives the database much more room for optimatic optimization.  
+Finally, the declarative languages often lend themselves to parallel execution. Imperative code is very hard to parallelize across multiple cores and multiple machines, because it specifies instructions that must be performed in a particular order. Declerative languages have a better chance of getting faster in parallel execution because they specify only the pattern of the result, not the algo that is used to determine the result.
+
 
 ```sh
 docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=test <youruser>/dillinger:${package.json.version}
