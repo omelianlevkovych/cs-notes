@@ -116,7 +116,97 @@ the list of users appears in a particular order. If the db wants to reclaim unus
 The SQL (for instance it will be SELECT query in this case) does not guarantee any particular ordering, and so it doesn't mind if the order changes. But if the query is written in imperative way, the db can never be sure whether the code is relying on the ordering or not. The fact that SQL is more limited in functionality gives the database much more room for optimatic optimization.  
 Finally, the declarative languages often lend themselves to parallel execution. Imperative code is very hard to parallelize across multiple cores and multiple machines, because it specifies instructions that must be performed in a particular order. Declerative languages have a better chance of getting faster in parallel execution because they specify only the pattern of the result, not the algo that is used to determine the result.
 
+#### Declerative query on the web
+The adventage of declerative languages are not limited just to dbs.  
+Imagine you have the following example:  
+```sh
+<ul>
+    <li class="selected">
+        <p>Admins</p>
+        <ul>
+            <li>SuperAdmin</li>
+            <li>SuDo</li>
+            <li>OrganizationAdmin</li>
+        </ul>
+    </li>
+</ul>
+```
 
+Now lets say you want the title of the current selected page to have a red background. This is easy using the CSS:  
+```sh
+li.selected > p {
+    background-color: red;
+    }
+```
+From here you can see that CSS is a declerative language.  
+Just imagine how tough life would be like if you had to use an imperative approach:  
+```sh
+JS DOM API:  
+var liElements = document.getElementByTagName("li");
+for (var i = 0; i < liElements.length; ++i) {
+    if (liElements[i].className == "selected") {
+        var children = liElements[i].childNodes;
+        for (var j = 0; j < children.length; ++j) {
+            var child = children[j];
+            if (child.nodeType === Node.ELEMENT_NODE && child.tagName === "p") {
+                child.setAttribute("style", "background-color: red");
+            }
+        }
+    }
+}
+```
+Except the fact that above code is less readable (more awful), it also has some serious problems:
+* If the selected class is removed the blue color won't be removed, even if the code is rerun - and so the item will remain highlited until the entire page is reloaded. With CSS, the browser automatically detect when the _li.selected > p_ rule no longer applies and removes the red background as soon as selected class is removed.
+* If you want to take advantage of the new API, such as document.GetElementByClassName("selected") or even document.evaluate() - which may improve performance - you have to rewrite the code. On the other hand, browser vendors can improve the performance of CSS without breaking compatibility.
+
+#### MapReduce Querying
+*MapReduce* is a programming model for processing large amounts of data in bulk across many machines, popularized by Google.  
+A limited form of MapReduce is supported by some NoSQL dbs, including MongoDb and CouchDb, as a machanism for performing read-only queries across many docs.  
+MapReduce is neither a declerative language or a fully imperative query API, but somewhere in between: the logic of the query is expressed with snippets of code, which are called repeatedly by the processing framework. It is based on _map (collect)_ and _reduce (fold, inject)_ functions that exist in many functional programming languages.  
+The map and reduce must be a _pure_ functions which means they only use the data that is passed to them as input, they cannot perform additional db queries, and they must not have additional side effects. These restrictions _allow the database to run the functions anywhere, in any order, and rerun them on failure_.  
+The moral of this story is that a NoSQL system may find itself accidentaly reinventing SQL, albeit in disguise.
+
+### Graph-like data models
+In case you have a lot of many-to-many relationships.
+#### Property graph model
+Implemented by Neo4j, Titan, InfiniteGraph.  
+In the property graph model, each vertex (dot) consist of:
+* A unique identifier
+* A set of outgoing edges
+* A set of incoming edges
+* A collection of properties (key-value pairs)
+
+Each edge consists of:
+* A unique identifier
+* The vertex at which the edge starts (the _tail vertex_)
+* The vertex at which the edge ends (the _head vertex_)
+* A label to describe the kind of relationship between the two verticles
+* A collection of properties (key-value pairs)
+
+How it would be implemented in relational schema:
+```sh
+CREATE TABLE  verticles (
+    vertex_id integer PRIMARY KEY,
+    properties json
+);
+
+CREATE TABLE edges (
+edge_id integer PRIMARY KEY,
+tail_vertex integer REFERENCES vertices (vertex_id),
+head_vertex integer REFERENCES vertices (vertex_id),
+label text,
+properties json
+);
+
+CREATE INDEX edges_tails ON edges (tail_vertex);
+CREATE INDEX edges_heads ON edges (head_vertex);
+```
+Some important aspects of this model are:
+* Any vertex can have an edge connecting with any other vertex (even itself). There is no schema restricting any of connections
+* Given any vertex, you can efficiently find both its incoming and outgoing edges, and thus _traverse_ the graph
+* By using different labels for different kind of relationship, you can store several different kind of information in a single graph, while still maintaining a clean data model.
+
+Graphs are decent for evolvability: as you add features to your app, a graph can easy be extended.
 ```sh
 docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=test <youruser>/dillinger:${package.json.version}
 ```
