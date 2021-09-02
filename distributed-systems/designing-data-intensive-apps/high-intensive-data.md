@@ -207,6 +207,58 @@ Some important aspects of this model are:
 * By using different labels for different kind of relationship, you can store several different kind of information in a single graph, while still maintaining a clean data model.
 
 Graphs are decent for evolvability: as you add features to your app, a graph can easy be extended.
+
+#### Graph queries in SQL
+In a relational db, you usually know in advance which joins you need in your query. In a graph query, you may need to traverse number of edges before you find the vertex you're looking for - the number of joins is not fixed in advance.  
+Variable-length traversal path in a query can be expressed using something called _recursive common table expression_ (the WITH recursive syntax).  
+Just compare the queries from the SQL and Cypher query languages:  
+```sh
+SQL:
+WITH RECURSIVE 
+-- in_usa is the set of vertex IDs all locations within USA
+in_usa(vertex_id) AS (
+    SELECT vertex_id FROM verticies WHERE properties >> 'name' = 'United States'
+    UNION
+    SELECT edges.tail_vertex FROM edges
+        JOIN in_usa ON edges.head_vertex = in_usa.vertex_id
+        WHERE edges.label = 'within'
+),
+
+-- in_europe is the set of vertex IDs all locations within EU
+in_europe(vertex_id) AS (
+    SELECT vertex_id FROM verticies WHERE properties >> 'name' = 'Europe'
+    UNION
+    SELECT edges.tail_vertex FROM edges
+        JOIN in_europe ON edges.head_vertex = in_europe.vertex_id
+        WHERE edges.label = 'within'
+),
+
+born_in_usa(vertex_id) AS (
+    SELECT edges.tail_vertex FROM edges
+        JOIN in_usa ON edges.head_vertex = in_usa.vertex_id
+        WHERE edges.label = 'born_in'
+),
+
+lives_in_europe(vertex_id) AS (
+    SELECT edges.tail_vertex FROM edges
+        JOIN in_europe ON edges.head_vertex = in_europe.vertex_id
+        WHERE edges.label = "lives_in"
+),
+
+SELECT vertices.properties ->> 'name'
+FROM verticies
+-- join to find those people who were both born in the US *and* live in EU
+JOIN born_in_usa ON verticies.vertex_id = born_in_ua.vertex_id
+JOIN lives_in_europe ON verticies.vertex_Id = lives_in_europe.vertex_id;
+```
+```sh
+Cypher:
+MATCH
+    (person) -[:BORN_IN]-> () -[:WITHIN*0..]-> (us:Location {name:'United States'}),
+    (person) -[:LIVES_IN]-> () -[:WITHIN*0..]-> (us:Location {name:'Europe'})
+RETURN person.name
+```
+If the same query can be written in 4 lines in one query language but requires 29 lines in another, that just shows that different data models are designed to satisfy different use cases.
 ```sh
 docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=test <youruser>/dillinger:${package.json.version}
 ```
