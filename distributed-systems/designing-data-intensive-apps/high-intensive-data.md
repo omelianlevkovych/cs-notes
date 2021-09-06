@@ -259,6 +259,20 @@ MATCH
 RETURN person.name
 ```
 If the same query can be written in 4 lines in one query language but requires 29 lines in another, that just shows that different data models are designed to satisfy different use cases.
+*NOTE*: There is also a triple store model which is very similar to the graph mode.  
+The idea behind this model is that all info is stored in a form of very simple three-part statements:  
+_(subject, predicate, object)_  
+
+#### Summary
+Data models itself is huge subject.  
+Historically, data started out being represented as one big tree (the hierarchical model), but this wasn't good for representing many-to-many relationships, so the relational model was invented to solve the problem.  
+More recently, developers found that some apps don't fit well the relational model either. New nonrelational 'NoSql' datastores have diverged in two main directories:
+* Document dbs target use cases where data comes in self-contained documents and relationship between one document and another is rare
+* Graph dbs go in the opposite direction, tartgeting use cases where anything is potentially related to everything
+
+All three models (relational, document, graph) are widely used today, and each is good in its respective domain.
+## Storage and retrieval
+
 ```sh
 docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=test <youruser>/dillinger:${package.json.version}
 ```
