@@ -272,7 +272,39 @@ More recently, developers found that some apps don't fit well the relational mod
 
 All three models (relational, document, graph) are widely used today, and each is good in its respective domain.
 ## Storage and retrieval
+On the most fundamental level db have to do two things: when you give it some data, it should store the data, and when you ask it again later, it should give the data back to you.  
+Why should you, as an app dev, care how the db handles storage and retrieval internally? Yo're probably not gonna implement your own storage engine from scratch (at least yet), but you do need to select a storage engine that is appropriate for your app. In order to tune a storage engine to perform well on your kind of workload, you need to have a rough idea of what the storage engine is doing under the hood.  
+In particular, there is a big diff between storage engines that are optimized for transaction workloads and those that are optimized for analytics.  
+We will examine two families of storage engines, _log-structured_ storage engines, and _page-oriented_ storage engines such as B-trees.
+### Data structures that power your database
+Consider the worlds simplest database, implemented as two Bash functions:
+```sh
+#!/bin/bash  
+db_set() {
+    echo "$1,$2" >> database
+}
 
+db_get() {
+    grep "^$1," database | sed -e "s/^$1,//" | tail  -n 1
+}
+```
+This two functions implement key-value store.  
+In case you insert two similar keys the last inserted key will be shown (hence the tail -n 1 in db_get()). Example:
+```sh
+db_set 42 '{"name": "Lviv", "attractions": "Horse"}' (by the way value is a string type so you basically can insert any string there, eg. JSON)
+db_set 42 '{"name": "Lviv", "attractions": "Opera House"}'
+
+db_get 42
+{"name": "Lviv", "attractions": "Opera House"}
+```
+The underlying storage format is very simple: a text file where each line contains a key-value pair, separated by a comma.  
+Our db_set() func actually has pretty good performance for something that is so simple, because appending to a file is generally very efficient. Simply to what db_set() does, many dbs internally use a _log_, which is append-only data file. Real dbs have more issues to deal with (such as concurrency control, reclaiming disk space so that the log does'nt grow forever, and handling errors and partially written records), but the basic principle is the same. 
+!NOTE: The word _log_ is often used to refer to app logs, where an app outputs text that describes what's happening. In this book, _log_ is used in more general sense: an append-only sequence of records. It doesn't have to be human -readable; it might be binary and intended only for other programs to read.  
+
+On the other hand, our db_get() function has terrible performance if you have a large number of records in db. The cost of lookup is O(n).  
+In order to efficiently find the value for a parcicular key in the db, we need a different data structure: an index.  
+An _index_ is an additional structure that is derived from the primary data.
+### Hash indexes
 ```sh
 docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=test <youruser>/dillinger:${package.json.version}
 ```
