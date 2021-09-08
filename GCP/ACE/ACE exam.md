@@ -55,3 +55,22 @@ There are three types of IAM roles:
 
 Service Accounts control server-to-server interactions (M2M)
 
+There are four ways to interact with GCP:
+* Cloud Platform Console
+* Cloud Shell and Cloud SDK. Includes command-line tools for Cloud Platform products and services: gcloud, gsutil (cloud storage), bq (big query)
+* Cloud Console Mobile App
+* Rest-based API. Most APIs include daily quotas and rates (limits) that can be raised by request.
+
+Use API Explorer to help you write the code:
+* The Api Explorer is an interactive tool that lets you easily try Google APIs using browser
+* With the API Explorer you can:
+ * Browse quickly through available APIs and versions
+ * See methods available for each API and params they support
+ * Execute requests for any method and see response in real time
+ * Easily make auth calls
+
+Use client libraries to control GCP resources from within your code.
+
+# Cloud Marketplace (Cloud Launcher)
+
+
