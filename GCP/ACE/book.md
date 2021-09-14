@@ -89,3 +89,4 @@ In addition to high availability and durability, multiregions storage allows for
 distributed across regions.  
 The _cold storage class_ is a low cost archival storage designed for high durability and infrequent access. This class of storage
 is suitable for data that is accessed less than once per year.
+Test commit.
