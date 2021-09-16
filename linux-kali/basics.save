@@ -1,0 +1,22 @@
+$ pwd - present working directory (echo %cd
+$ whoami - shows current user name
+$ sudo su - get the root user permisions
+$ sudo su [userName] - get the user permissions
+$ cd .. - move one level above
+$ cd .. .. - move two levels abouve
+--// etc
+
+$ cd / - move to root dir
+
+
+$ ls -l - list all items in current directory (long listing stands -l)
+$ ls -la - show also hidden items
+
+You usually use -- before word and - before letter in linux (nice)
+
+$ aircrack-ng --help
+$ man aircrack-ng - manual (readme.md)
+$ locate aircrac-ng - it will list the all instances/files. However, the database which locate command uses are updated once a day, so it is possible that just added file wont be discovered till the next day.
+
+$ whereis aircarck-ng - returns the executalbe location
+$ which aircrack-ng - returns the PATH vaiable for the 'keyword.executable'. The PATH var is the variable which contains the location where the executable file actually locates. So whenever you type a command in CLI it actualy uses PATH var to run that executable.

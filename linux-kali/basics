@@ -53,3 +53,14 @@ rmdir will not remove directory if it is not empty yet, it will popup warning me
 $ rm -r newdirectory 
 
 !Caution: be wary of using the -r option with rm, at least at first, because it's very easy to remove lauable files and directories by mistake.
+
+# Bash
+So imagine you have created a text file and putted there:
+$ echo "HelloWorld!"
+than you can run it via CLI:
+$ bash <filename>
+and thats work just fine
+Now imagine you want to run the <filename> without bash word, like exe in windows. All you need to do is:
+1) make the file executable:
+$ chmod +x <filename> - this command will change the permissions to allow the script to be executable for the user, chmod is a command that changes permissions on a file, and +x will add executalbe rights
+2) add shebang (#!) at the top of the script. In Unix-like systems, a text will with the shabeng is interpreted as an executable file.

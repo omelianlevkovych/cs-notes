@@ -1,0 +1,7 @@
+#!/bin/bash
+mkdir newDir
+touch  backedFile
+cp backedFile /newDir
+mv backedFile renamedFile
+
+# should create new dir, create file, copy file to dir and rename the copy
