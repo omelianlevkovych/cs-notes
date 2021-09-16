@@ -20,3 +20,36 @@ $ locate aircrac-ng - it will list the all instances/files. However, the databas
 
 $ whereis aircarck-ng - returns the executalbe location
 $ which aircrack-ng - returns the PATH vaiable for the 'keyword.executable'. The PATH var is the variable which contains the location where the executable file actually locates. So whenever you type a command in CLI it actualy uses PATH var to run that executable.
+
+right+cntrl + F - switch the VM full screen off/on
+
+Suffice to say that Linux (and Windows as well) allows us to take the output of one command and send it as input to another command. This is called piping, and we use the | command to do it.
+
+$ ps - show processes currently running
+$ grep - for search
+
+e.g ps aux | grep apache2 - will show wheter apache is running
+# Modifying files and directories
+## Creating files
+Concatenation with cat
+$ cat <filename> - display the content of that file
+$ cat > <filename> - creates a file
+$ cat >> <filename> - append more text to the end of the file
+$ touch <filename> - it will modify the existing file or create new one if not yet exists
+
+$ touch oldfile
+$ cp oldfile /root/newdirectory/newfile - copy the old file (the previous file still remaining in old place, 2 copies)
+
+Renaiming a file
+Unfortunatelly, Linux doesn't have a command intended solely for renaiming a file, as Windows and some other OS do, but it does have mv (move) command.
+
+$ mv - can be used to move or rename file
+$ m newfile newfile2 - will rename the file
+
+$ rm filename - will remove the file
+$ rmdir newdirectory - will remove the directory
+
+rmdir will not remove directory if it is not empty yet, it will popup warning message. In case you do want to remove dir and all content there use:
+$ rm -r newdirectory 
+
+!Caution: be wary of using the -r option with rm, at least at first, because it's very easy to remove lauable files and directories by mistake.
