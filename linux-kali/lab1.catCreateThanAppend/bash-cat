@@ -1,0 +1,5 @@
+#! bin/bash
+cat >> cat >> bash-cat
+
+# file was recreated by running it in bash
+# so i wont use cat > here
