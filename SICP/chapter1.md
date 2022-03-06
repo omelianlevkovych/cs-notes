@@ -13,3 +13,58 @@ Thus, like the sorcerer's apprentice, novice programmers must learn to understan
 Well designed computational systems, like well-designed automobiles or nuclear reactors, are designed in a **modular manner**, so that the parts can be constructed, replaced, and debugged separetly.  
 
 ## 1.1 the elements of programming
+When we describe a language we should pay particular attention to the means(methods) that the language provides for combining simple ideas to form more complex ideas.  
+Every programming language has three mechanisms for accomplishing this:
+*  **primitive expressions**, which represent the simplest entities the language is concerned with,
+*  **means of combination**, by which compound elements are built from simple ones, and
+*  **means of abstraction**, by which compound elements can be named and manipulated as units.  
+
+In programming we deal with two kinds of elements: **procedures** and **data**. (later on we will see that they are really not so distinct).  
+
+In this chapter we will deal only with the simple numerical data so that we can focus on the rules for building procedures.
+
+## 1.1.1 expressions
+https://inst.eecs.berkeley.edu/~cs61a/fa14/assets/interpreter/scheme.html
+
+```sh
+(+ 8 4)
+>> 12
+```
+The convention of placing the operator to the left of the operands is known as _prefix notation_. Prefix notations has several advantages:
+* it can accommodate procedures that may take an arbitrary number of arguments, eg
+```sh
+(+ 8 4 -5 314 0)
+>> 321
+```
+* it extends in a straightforward way to allow combinations to be nested, eg
+```sh
+(+ (* 3 7) (- 10 12))
+>> 19
+```
+
+Tip: use pretty-prining, page 37
+
+## 1.1.2 naming and the environment
+In the Scheme dialect of Lisp, we name things with **define**.  
+```sh
+(define size 2)
+```
+causes the interpreter to associate the value 2 with the name _size_. Once the name _size_ has been associated with the number 2, we can refer to the value 2 by name:
+```sh
+size 2
+>> 2
+```
+
+**define** is our language's simplest means of abstraction, for it allows us to use simple names to refer to the results of compound operations, such as the _circumference_ eg:
+```sh
+(define pi 3.14)
+(define radius 10)
+(define circumference (* 2 pi radius))
+circumference
+>> 62.800000000000004
+```
+
+In general, computational objects may have very complex structures, and it would be extremely hard to have to remember and repeat their details each time we want to use them.  
+Indeed, complex programs are constructed by building, step by step, computational objects of increasing complexity.  
+
+It should be clear that the possibility of associating values with symbols and later retrieving them means that the interpreter must maintain some sort of memory that keeps track of the name-object pairs. This memory is called the **environment**.  
