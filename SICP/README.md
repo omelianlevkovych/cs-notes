@@ -13,5 +13,5 @@ I will start writing exercises in text editor without any IDE etc;
 
 
 # symbols in exercise
-; - represents comments line
->> represents my answer (some additional inputs I will put it the comments as well)
+";" - represents comments line
+">>" represents my answer (some additional inputs I will put it the comments as well)
