@@ -9,8 +9,7 @@
 (define (f x y z)
   (cond ((and (< x y) (< x z)) (sqrt-sum y z))
         ((and (< y x) (< y z)) (sqrt-sum x z))
-        ((and (< z y) (< z x)) (sqrt-sum x y))))
+        (else sqrt-sum x y)))
 
 (f 1 2 3)
-
 ; >> 13
