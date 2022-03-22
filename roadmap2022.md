@@ -21,3 +21,6 @@
 * finish book
 * mb try clojure or clojure.js
 * as optional - read C# functional approach book, forgot the name
+
+## system design
+* well known book
