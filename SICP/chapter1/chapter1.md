@@ -92,3 +92,18 @@ The substitution model is only the first of many possible models - a way to get 
 ### applicable order versus normal order
 The interpreter first evaluates the operator and operands and then applies the resulting procedure to the resulting arguments. This is not the only way to perform evaluation. An alternative evaluation model would not evaluate the operands until their values were needed. Instead it will only evaluate when only primitive operands are used.  
 List uses applicative-order
+
+## square roots
+What is the difference between poor function and mathematical function? They are indeed are very similar. Procedures (pure functions) must be effective (it means all that algorithms and etc should be used to make it possible for computer to calculate value).  
+Consider the problem of computing the square root (sqrt).
+
+Math: sqrt(x) = the y such that y >= 0 and y^2 = x  
+
+We can use this function to recognize whether one number is the sqrt of another, or to derive facts about square roots in general. On the other hand, **this definition does not describe a procedure**. Indeed, it tells us almost nothing about how to find sqrt of x.  
+**The contrast betweel function and procedure** is a reflection of the general distinction between describing properties of things and describing how to do things.  
+Declerative vs imperative knowleadge.  
+In math we are usually concerned with declerative(what is) descriptions, wheres in computer science we are usually concerned with imperative(how to) descriptions.  
+
+https://www.youtube.com/watch?v=FpOEx6zFf1o  
+
+newtons method: implement iterative and recursion
