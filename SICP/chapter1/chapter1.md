@@ -68,3 +68,27 @@ In general, computational objects may have very complex structures, and it would
 Indeed, complex programs are constructed by building, step by step, computational objects of increasing complexity.  
 
 It should be clear that the possibility of associating values with symbols and later retrieving them means that the interpreter must maintain some sort of memory that keeps track of the name-object pairs. This memory is called the **environment**.  
+
+http://www.uponmyshoulder.com/blog/2011/so-you-want-to-do-the-sicp/
+
+
+# 1/1/4 compound procedures
+The general form of procedure definition:
+```sh
+(define (<name> <formal parameters>)
+<body>)
+```
+example: x^2 + y^2
+```sh
+(define (square x)(* x x))
+
+(define (sum-of-squares x y)
+(+ (square x)(square y)))
+```
+
+# the substitution model for procedure application
+The substitution model is only the first of many possible models - a way to get started thinking formally about the evaluation process. In general, when modeling phenomena in science and engineering, we begin with simplified, incomplete models. As we grow, as we examine things in greater detail, this simple models become inadequate and must be replaced by more refined models.
+
+### applicable order versus normal order
+The interpreter first evaluates the operator and operands and then applies the resulting procedure to the resulting arguments. This is not the only way to perform evaluation. An alternative evaluation model would not evaluate the operands until their values were needed. Instead it will only evaluate when only primitive operands are used.  
+List uses applicative-order
