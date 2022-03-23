@@ -55,3 +55,36 @@ A good post-mortem should include the following:
 * is able to set ambitious goals and pursue them even when there might be resistence or inertia from others
 * improving team cohesion, actively works to help coworkers without being asked
 * has a strong sense of etics about everything they do; willing to make a difficult or inconvinient decisions to protect the integrity of the team and product
+
+## knowledge sharing
+Your organization understands your problem domain better than some random dude on the internet; your organization need a **culture of learning**.  
+People also need to admin their lack of knowledge.  
+### challanges to learning
+* lack of psycological safety - an env in which people tend to afraid to take risks
+* info islands - knowleadge fragmentation; parts of organization that do not communicate
+* all-or-nothing-expertice - a group of people that is split between who know 'everything' and novices, with little middle ground.
+* parroting - mimicry without understanding; coping patterns or code without understanding their purpose
+* haunted graveyards - places in code, which people afraid to touch
+
+### philosophy
+people are the core of software engineering: code is an imporatant output but only a small part of building a project. Code does not emerge spontaneously out of nothing and neither does expertise. **Every expert was once a novice: an organization's success depends on growing and investing in its people**.  
+
+To learn you must first acknowledge that there are things that you don't understand.  
+We should welcome such honesty rather than punish it.  
+An enormous part of learning is being able to try things and feeling safe to fail. In a healthy environment, people feel comfortable asking questions, being wrong, and learning new things.
+### mentorship
+assign a newcomer/junior a mentor - someone who is not their team member, manager, or tech lead - whose responsibility explicitly include answering questions and helping ramp up.
+### growing your knowledge
+Knowledge sharing starts with yourself.  
+* ask questions - always be learning, always be asking questions; one of the biggest mistakes of beginners is they don't ask questions when they stack. Dont fall into this trap!
+Do not be afraid to say **"I do not know what this is, could you explain that?"**.
+It does not matter whether you are a new team member or a senior leader: you should always be in an environment where there's something to learn. Otherwise change place.
+It's important not to **mistakenly equate "seniority" with "knowing everything"**.
+And very important - **openly asking questions or expressing gaps in knowledge reinforces that it is OK for others to do the same.**  
+
+### understand context
+Learning is not just about new things; **develop an understanding of the decisions behind the design and implementation of existing things!**
+Lol nice example: Suppose that your team inherits a legacy codebase for a critical peace of infrastructure that has existed for many years. The original author are long gone, and the code is diffucult to understand. It can be very tempting to rewrite from scratch rather than spend time learning the existing code. But instead of thinking "I dont get it" and ending your thoughts there, **dive deeper**: what questions should you be asking?  
+Consider the principle of **Chesterson's fence**: before removing or changing something, first understand why it's there.  
+Engineers have a tendency to reach for "this is bad!" far more quickly than is often warranted, especially for unfamiliar code, language, or paradigm.  
+After you understood the context and purpose of the code, consider whether your change still makes sense. If it does, go ahead and make it; if it doesn't document your reasoning for future readers.  
