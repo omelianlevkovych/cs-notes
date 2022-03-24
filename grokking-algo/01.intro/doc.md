@@ -1,3 +1,6 @@
+# leetcode partice
+play with 30 easy-medium top liked  
+move to practice by topic
 # binary search
 it's input is a sorted list of elements  
 if an element you're looking for is in the list, binary search returns the position; otherwise, binary search returns _null_.  
