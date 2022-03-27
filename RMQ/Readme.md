@@ -1,3 +1,6 @@
+# Introduction
+In this RMQ folder I am going to play with the Rabbit Message Queue a bit.
+
 # jargon
 * _producing_ means sending. A program that send messages is a _producer_.
 * a _queue_ is a name for post box which lives inside RMQ. Although messages can only
