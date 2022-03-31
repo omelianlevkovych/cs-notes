@@ -24,3 +24,7 @@
 
 ## system design
 * well known book
+
+
+open source projects ideas:  
+- tool to create folder structures on os; CLI command -> open vs code -> write down structure -> finish
