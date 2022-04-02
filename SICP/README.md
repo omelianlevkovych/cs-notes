@@ -1,3 +1,6 @@
+So ask yourself whether what you most need at the moment is a course whose main purpose will be to force you to think outside the usual paradigms, and decide if it is worth the time commitment.  
+I have decided to start focusing on advanced data structures and algorithms first; than moving to this again  
+
 # overall
 I have decided to read SICP as much as I can and have motivation to.  
 I also will try to do as many exercises as I could.  
