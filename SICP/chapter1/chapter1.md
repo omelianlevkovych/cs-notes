@@ -105,5 +105,8 @@ Declerative vs imperative knowleadge.
 In math we are usually concerned with declerative(what is) descriptions, wheres in computer science we are usually concerned with imperative(how to) descriptions.  
 
 https://www.youtube.com/watch?v=FpOEx6zFf1o  
+newton method: square roots are all aproximat solutions, so we should get a guess which will feet our requisite (like abs (x - guess*guess) < eps; where eps is some small number)  
+so to make better guess (closer to the actual sqare root of x) by averaging guess and x/guess.  
 
-newtons method: implement iterative and recursion
+The fun part about this chaper is that just by all of the above provided operations we can be sufficient of writing any purely numerical program. We have not included in our language any **iterative** (looping) constructs that direct the computer to do something over and over again.  
+Just a power of recursion.  
