@@ -11,3 +11,9 @@ Good programmers will naturally start to abstract and develop a model that can d
 
 
 Highly productive teams grow their knowleadge consciously, practicing **continious learning** (Kerievsky 2003). For devs, this means improving tech skills, along with general domain modeling skills. But it also includes serious learning about the specific domain they are working in.  
+
+# ubiquitous language
+A domain model can be the core of a common language for a software project. The model based language should be used among devs to describe not only artifacts in the system, but tasks and functionality.  
+Commit the team to exercise language relentessly in all communication within the team and in the code. Use the same language in diagrams, writing, and especially speach.  
+Recognize that a change in ```ubiqutious language``` is a change to the model.  
+The ```ubiqutious language``` is the primary carrier of the aspects of design that don't appear in code - large-scale structures that organize the whole system, ```bounded contexts``` that define the relationships of different systems and models, and other patterns applied to the model and design.
