@@ -1,30 +1,32 @@
-# topics to improve
-## .net
-* two dbs cqrs, event sourcing, DDD (read the book)
-* more serverless (any cloud)
-* pet proj with microserivces + k8s (published to cloud)
-* a bit deeper dive into ELK stack
+# fundamentals
 
-## frontend
-* as less html/css as possible but improve my js skills
-* try odin project
-* learn reactjs
+domain-oriented logic:
+- clean code, OOP & OOD, Patterns
+- C# language internals (memory, concurrency, compilator, CLR, OS Linux)
+- DDD, functional programming, F#
 
-## algo
-* python
-* leetcode
-* reading:
-    - grokking alo
-    - skiena book
+data-oriented logic:
+- Sql, SqlServer internals (cosnider posgresql)
+- sql db design theory
+- EFCore internals (n+1, castesian problems)
+- nosql (dynamodb-book), practice with nosql
 
-## CISP
-* finish book
-* mb try clojure or clojure.js
-* as optional - read C# functional approach book, forgot the name
-
-## system design
-* well known book
+# middle-are
+- networking, http, rest, RPC
+- microservices, message-queues
 
 
-open source projects ideas:  
-- tool to create folder structures on os; CLI command -> open vs code -> write down structure -> finish
+# devops
+- monitoring tool usage
+- k8s
+- terraform
+- good knowleadge with one of the clouds
+
+
+# algo
+- leetcode
+- system design books, videos
+
+# nice to have
+- blog
+- open source
