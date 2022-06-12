@@ -1,4 +1,2 @@
-this is not something worth sharing; mostly just some notes and exercises  
-
-however just some of them worth mentioning:
-* SICP exercises and notes
+**In the darkness there flashed before my mind fragments of my cherished treasury of daemonic lore**  
+or just simply skeaping my learning notes :joy:
