@@ -30,3 +30,19 @@ and have a skills to dig into details when it is really needed. Use abstraction 
 - software will always grow and change, it brings compexity
 - the problems of characterizing the behavior of discrete systems
 
+five attributes of a complex systems:
+- hierarchic structure
+all systems have subsistems and all systems are parts of larger systems
+- relative primitives
+```what is primitive for one observer may be at much higher level of abstraction for another```
+- separation of concerns
+difference between intra- and intercomponent interactions provides a clear separation of concerns among the
+various parts of a system, ``` making it possible to study each part in relative isolation```
+- common patterns
+hierarchic systems are usually composed of only a few different kind of subsystems in various combinations and
+arrangements
+- stable intermediate forms
+as a system evolve, objects that were once considered complex become the primitive objects on which more complex
+systems are built. Furthermore, we can never craft these primitive objects correctly first time: we must use them
+in context first and improve them over time as we learn more about the real behavior of the system
+
