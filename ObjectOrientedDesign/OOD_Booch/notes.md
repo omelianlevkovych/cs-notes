@@ -46,3 +46,22 @@ as a system evolve, objects that were once considered complex become the primiti
 systems are built. Furthermore, we can never craft these primitive objects correctly first time: we must use them
 in context first and improve them over time as we learn more about the real behavior of the system
 
+!!!!! Motivates  
+```The discovery of common abstractions and mechanisms greatly facilitates our understanding of complex systems.```
+For example, with just a few minutes of orientation, an experienced pilot can step into a multiengine jet aircraft
+he or she has never flow before and safely fly the vehicle. Having recognized the properties common to all such aircraft,
+such as the functionality of the rudder, airlones, and thrlottle, the pilot primarly needs to learn what properties are
+unique to that particular aircraft. If the pilot already knows how to fly a given aircraft, it is far easier to learn how
+to fly a similar one.  
+
+### Bringing order to chaos
+- Decomposition (divide et impera)
+```Algorithmic decomposition``` is a top-down structured design.  
+Here is an example based on master file creation:
+![highlevel](https://github.com/omelianlevkovych/the-nameless-city/blob/main/ObjectOrientedDesign/OOD_Booch/assets/algo.png)
+
+We suggest that there is an alternate decomposition possible for the same problem - ```object-oriented decomposition```.
+![highlevel](https://github.com/omelianlevkovych/the-nameless-city/blob/main/ObjectOrientedDesign/OOD_Booch/assets/oop.png)
+
+Rather than decompositing the problem into steps such as _Get formatted update_ and _Add checksum_, we have identified objects
+such as _Master file_ and _Checksum_, which ```derive directly from the vocabulary of the problem domain```.  
