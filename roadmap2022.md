@@ -11,7 +11,7 @@ data-oriented logic:
 - EFCore internals (n+1, castesian problems)
 - nosql (dynamodb-book), practice with nosql
 
-# middle-are
+# middle-area
 - networking, http, rest, RPC
 - microservices, message-queues
 
@@ -30,3 +30,6 @@ data-oriented logic:
 # nice to have
 - blog
 - open source
+
+#
+sysdes git, efcore, help + k8s
